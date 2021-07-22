@@ -9,7 +9,7 @@ namespace Markdown.Converter
         {
             var markdownNoWhiteSpace = markdown.TrimStart();
             var headingSize = markdownNoWhiteSpace.TakeWhile(c => c == '#').Count();
-            var htmlContentStartPosition = headingSize++;
+            var htmlContentStartPosition = headingSize + 1;
             var htmlContent = markdownNoWhiteSpace.Substring(htmlContentStartPosition);
             var htmlHeading = $"<h{headingSize}>{htmlContent}</h{headingSize}>";
 
