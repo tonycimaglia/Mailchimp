@@ -13,11 +13,13 @@ namespace Markdown.Converter.Tests
         }
 
         [TestCase("# Heading 1", "<h1>Heading 1</h1>")]
-        [TestCase("# Heading 2", "<h2>Heading 2</h2>")]
-        [TestCase("# Heading 3", "<h3>Heading 3</h3>")]
-        [TestCase("# Heading 4", "<h4>Heading 4</h4>")]
-        [TestCase("# Heading 5", "<h3>Heading 5</h5>")]
-        [TestCase("# Heading 6", "<h3>Heading 6</h6>")]
+        [TestCase("## Heading 2", "<h2>Heading 2</h2>")]
+        [TestCase("### Heading 3", "<h3>Heading 3</h3>")]
+        [TestCase("#### Heading 4", "<h4>Heading 4</h4>")]
+        [TestCase("##### Heading 5", "<h5>Heading 5</h5>")]
+        [TestCase("###### Heading 6", "<h6>Heading 6</h6>")]
+        [TestCase("  # Heading 1", "<h1>Heading 1</h1>")]
+        [TestCase("### Heading With # In Characters", "<h3>Heading With # In Characters</h3>")]
         public void ValidateConversion(string markdown, string html)
         {
             var convertedHtml = _headingConverter.Convert(markdown);
