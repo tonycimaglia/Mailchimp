@@ -14,19 +14,10 @@ namespace Markdown.Converter.Tests
         }
 
         [TestCase("Unformatted text", "<p>Unformatted text</p>")]
+        [TestCase("This is some other text without formatting", "<p>This is some other text without formatting</p>")]
         public void ValidateConversion(string markdown, string html)
         {
             var convertedHtml = _paragraphConverter.Convert(markdown);
-            Assert.That(convertedHtml, Is.EqualTo(html));
-        }
-
-        [Test]
-        public void ValidateMultiLineConversion()
-        {
-            List<string> sequentialUnformattedText = new List<string>() { "How are you? ", "What's going on?" };
-            var html = "<p/>How are you? What's going on?</p>";
-
-            var convertedHtml = _paragraphConverter.Convert(sequentialUnformattedText);
             Assert.That(convertedHtml, Is.EqualTo(html));
         }
     }
