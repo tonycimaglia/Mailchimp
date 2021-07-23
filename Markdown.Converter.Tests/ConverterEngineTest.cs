@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Markdown.Converter.Converters;
+using NUnit.Framework;
 using System.Reflection;
 using System.Text;
 
@@ -25,6 +26,21 @@ namespace Markdown.Converter.Tests
             var convertedHtml = _converterEngine.ConvertToHtml(markDown);
 
             Assert.That(convertedHtml, Is.EquivalentTo(expectedHtml));
+        }
+
+
+        [TestCase("", ConversionType.BlankLine)]
+        [TestCase("## This is a header [with a link](http://yahoo.com)", ConversionType.HeadingWithLink)]
+        [TestCase("This is sample markdown for the[Mailchimp] (https://www.mailchimp.com) homework assignment.", ConversionType.ParagraphWithLink)]
+        [TestCase("[Link text](https://www.example.com)", ConversionType.Link)]
+        [TestCase("# Heading 1", ConversionType.Heading)]
+        [TestCase("Unformatted text", ConversionType.Paragraph)]
+        public void ValidateConversionType(string markdown, ConversionType expectedType)
+        {
+            var model = _converterEngine.DetermineConversionType(markdown);
+            var type = model.ConversionToPerform;
+
+            Assert.That(type == expectedType);
         }
     }
 }

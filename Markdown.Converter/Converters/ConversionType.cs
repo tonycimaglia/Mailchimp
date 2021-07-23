@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Markdown.Converter.Converters
 {
-    internal enum ConverterType
+    public enum ConversionType
     {
+        BlankLine,
         Heading,
         Link,
         Paragraph,
