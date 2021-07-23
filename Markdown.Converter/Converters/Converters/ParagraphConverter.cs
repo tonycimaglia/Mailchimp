@@ -7,8 +7,6 @@ namespace Markdown.Converter
     {
         public string Convert(string markdown)
         {
-            // combine consecutive unformatted lines before passing to paragraph converter
-            // this will eliminate need for method that converts multiple lines.
             var htmlParagraph = $"<p>{markdown}</p>";
             return htmlParagraph;
         }
