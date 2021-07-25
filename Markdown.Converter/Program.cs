@@ -8,9 +8,14 @@ namespace Markdown.Converter
         static void Main(string[] args)
         {
             var directoryPath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            string[] files = System.IO.Directory.GetFiles($"{directoryPath}\\SampleInputs", "*.md");
+            var seperator = System.IO.Path.DirectorySeparatorChar;
+            string[] files = System.IO.Directory.GetFiles($"{directoryPath}{seperator}SampleInputs", "*.md");
+
             foreach (var file in files)
             {
+                var fileName = System.IO.Path.GetFileName(file);
+                Console.WriteLine($"Generating html for: {fileName}\n");
+
                 var converter = new ConverterEngine();
                 var markDown = System.IO.File.ReadAllLines(file);
                 var html = converter.ConvertToHtml(markDown);
@@ -19,7 +24,6 @@ namespace Markdown.Converter
                     Console.WriteLine($"{line}\n");
                 }
             }
-            Console.WriteLine("Hello World!");
         }
     }
 }

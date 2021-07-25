@@ -21,8 +21,9 @@ namespace Markdown.Converter.Tests
         public void ValidateConversion(string markdownFile, string htmlFile)
         {
             var directoryPath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            var markDown = System.IO.File.ReadAllLines($"{directoryPath}\\TestFiles\\{markdownFile}");
-            var expectedHtml = System.IO.File.ReadAllLines($"{directoryPath}\\TestFiles\\{htmlFile}").Where(x => !string.IsNullOrWhiteSpace(x));
+            var seperator = System.IO.Path.DirectorySeparatorChar;
+            var markDown = System.IO.File.ReadAllLines($"{directoryPath}{seperator}TestFiles{seperator}{markdownFile}");
+            var expectedHtml = System.IO.File.ReadAllLines($"{directoryPath}{seperator}TestFiles{seperator}{htmlFile}").Where(x => !string.IsNullOrWhiteSpace(x));
 
             var convertedHtml = _converterEngine.ConvertToHtml(markDown);
 
