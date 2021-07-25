@@ -1,5 +1,6 @@
 ﻿using Markdown.Converter.Converters;
 using NUnit.Framework;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -21,7 +22,7 @@ namespace Markdown.Converter.Tests
         {
             var directoryPath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             var markDown = System.IO.File.ReadAllLines($"{directoryPath}\\TestFiles\\{markdownFile}");
-            var expectedHtml = System.IO.File.ReadAllLines($"{directoryPath}\\TestFiles\\{htmlFile}");
+            var expectedHtml = System.IO.File.ReadAllLines($"{directoryPath}\\TestFiles\\{htmlFile}").Where(x => !string.IsNullOrWhiteSpace(x));
 
             var convertedHtml = _converterEngine.ConvertToHtml(markDown);
 

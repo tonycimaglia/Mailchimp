@@ -32,15 +32,17 @@ namespace Markdown.Converter
                 }
             }
 
-            var htmlArray = new List<string>();
+            var htmlList = new List<string>();
             foreach (var model in markdownList)
             {
-                //var factory = new ConverterFactory(model);
-                //var markdown = factory.Convert(model);
-                //htmlArray.Add(markdown);
+                if (model.ConversionToPerform == ConversionType.BlankLine) continue;
+                var factory = new ConverterFactory();
+                var converter = factory.Create(model);
+                var html = converter.Convert(model.Markdown);
+                htmlList.Add(html);
             }
 
-            return htmlArray;
+            return htmlList;
         }
 
         public MarkdownModel DetermineConversionType(string markdown)

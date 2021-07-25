@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace Markdown.Converter
 {
-    public class ParagraphConverter
+    public class ParagraphConverter : IConverter
     {
         public string Convert(string markdown)
         {
