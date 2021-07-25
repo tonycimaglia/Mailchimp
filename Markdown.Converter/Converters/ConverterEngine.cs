@@ -1,22 +1,46 @@
 ﻿using Markdown.Converter.Converters;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Markdown.Converter
 {
     public class ConverterEngine
     {
-        public IEnumerable<string> ConvertToHtml(IEnumerable<string> markdown)
+        public List<string> ConvertToHtml(IEnumerable<string> markdown)
         {
+            List <MarkdownModel> markdownList = new List<MarkdownModel>();
+
             // loop and determine what kind of conversion should happen for each string
-            // DetermineConversionType()
-            // combine sequential lines of unformatted text
-            // use converter factory to instantiate correct converter
-            // convert and add to html string array
-            return new List<string>();
+            foreach (var line in markdown)
+            {
+                var currentModel = DetermineConversionType(line);
+                MarkdownModel prevModel = markdownList.LastOrDefault();
+                if(prevModel != null)
+                {
+                    bool prevModelIsParagraph = prevModel.ConversionToPerform == ConversionType.Paragraph;
+                    if (prevModelIsParagraph && (currentModel.ConversionToPerform == ConversionType.Paragraph))
+                    {
+                        markdownList.Last().Markdown += currentModel.Markdown;
+                    }
+                    else
+                    {
+                        markdownList.Add(currentModel);
+                    }
+                } else
+                {
+                    markdownList.Add(currentModel);
+                }
+            }
+
+            var htmlArray = new List<string>();
+            foreach (var model in markdownList)
+            {
+                //var factory = new ConverterFactory(model);
+                //var markdown = factory.Convert(model);
+                //htmlArray.Add(markdown);
+            }
+
+            return htmlArray;
         }
 
         public MarkdownModel DetermineConversionType(string markdown)
