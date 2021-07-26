@@ -2,7 +2,7 @@
 
 This document is intended for Carolyn, Nic, Tonee, Talmadge, and anyone else at Mailchimp.
 
-There are already two sample files in the SampleInputs directory which are converted to html and printed to the console when the program is run. Once the project is on your machine, feel free to add other markdown files to the Mailchimp/Markdown.Converter/SampleInputs directory. (You will have to rebuild the project if you add the files after your initial build)
+There are already two sample files in the SampleInputs directory which are converted to html and printed to the console when the program is run. Once the project is on your machine, feel free to add other markdown files to the Mailchimp/Markdown.Converter/SampleInputs directory.
 
 ## Instructions for running the project:
 
@@ -23,3 +23,7 @@ There are already two sample files in the SampleInputs directory which are conve
 - Once the project builds run: ```dotnet run```
 - Change directories into Markdown.Converter.Tests  (Mailchimp/Markdown.Converter.Tests).
 - Run the following command: ```dotnet test Markdown.Converter.Tests.csproj```
+
+Please reach out to me if you have any issues running through everything. I'm excited to speak to everyone Tuesday!
+
+Tony
