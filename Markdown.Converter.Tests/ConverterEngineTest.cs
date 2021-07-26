@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Markdown.Converter.Tests
 {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace Markdown.Converter
 {
     public class ParagraphWithLinkConverter: IConverter
